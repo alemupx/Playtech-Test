@@ -1,0 +1,14 @@
+.card {  
+    display: flex;    
+    flex-flow: column;
+    text-align: center;
+    width: 30%;
+    margin: auto;    
+    border-radius: 10px;
+    cursor: pointer;
+    padding: 1em;
+  }
+  
+  .card:hover {
+    background-color: rgba(123, 200, 226, 0.29);
+  }
