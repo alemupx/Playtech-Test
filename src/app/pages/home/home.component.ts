@@ -27,6 +27,10 @@ export default class HomeComponent implements OnInit {
     })
   }
 
+  goTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
   onScroll() {
     this.characterService.getCharacters(this.nextUrl).subscribe({
       next: (response) => {

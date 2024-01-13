@@ -1,6 +1,29 @@
-p{
+* {
+  font-family: din;
+  padding: 0;
   margin: 0;
-  font-size: 1.2em;
+
+}
+
+p {
+  margin: 0;
+} 
+
+#button {
+  position: fixed;
+  z-index: 1;
+  top: 20px;
+  right: 20px;  
+  padding: 10px 15px;
+  font-size: 30px;
+  background-color: transparent;  
+  cursor: pointer;
+  border: none;  
+}
+
+.background{
+  background-image: url('../../../assets/img/background.jpg');
+  background-repeat: round;
 }
 
 .container {
@@ -8,15 +31,16 @@ p{
   grid-template-columns: repeat(3, 1fr);
   gap: 3em;
   justify-items: center;
+  padding-top: 2em;
 }
 
 .card {
   width: 350px;
   height: 500px;
-  perspective: 1000px;  
-  font-family: din;
+  perspective: 1000px;
   display: flex;
   justify-content: center;
+
 }
 
 
@@ -34,11 +58,25 @@ p{
   font-weight: 900;
   text-align: center;
   margin: 0;
-  padding-top:1em ;
 }
 
-.card__inner__img{
+.card__inner__front__title__container {
+  background: rgba(255, 255, 255, 0.251);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  position: absolute;
+  top: 80%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 16px;
+  padding: 10px;
+}
+
+
+.card__inner__img {
   height: 100%;
+  border-radius: 15px;
 }
 
 .card:hover .card__inner {
@@ -47,24 +85,32 @@ p{
 
 
 .card__inner__front {
-  gap: 2em;
+  position: relative;
+  text-align: center;
 }
 
 .card__inner__back {
   justify-content: center;
   gap: 1em;
-  transform: rotateY(180deg);
   color: white;
-  background-color: rgb(179, 199, 219);
+  background-image: url('../../../assets/img/portal.png');
+  background-repeat: round;
+  background-color: rgb(52, 70, 77);
+  font-size: 25px;
+  
+
+  transform: rotateY(180deg);
 }
 
-.card__inner__front,.card__inner__back {
+.card__inner__front,
+.card__inner__back {
+
   display: flex;
   flex-direction: column;
   position: absolute;
   box-shadow: 0 8px 14px 0 rgba(0, 0, 0, 0.2);
-  border: 1px solid rgb(0, 0, 0);
-  border-radius: 10px;
+  border: 5px solid #ffffff;
+  border-radius: 20px;
   width: 100%;
   height: 100%;
   -webkit-backface-visibility: hidden;
