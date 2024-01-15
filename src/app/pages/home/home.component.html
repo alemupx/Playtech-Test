@@ -1,42 +1,14 @@
-<section class="background" infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="50" (scrolled)="onScroll()">
-    <button id="button"  (click)="goTop()">🔼</button>
-    @if(characters.length> 0){
+<app-navbar (emitter)="getDataFromChild($event)"></app-navbar>
+<section class="background" infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="50"
+    (scrolled)="onScroll()">
+    <button id="button" (click)="goTop()">🔼</button>
+
+    @if(searchedResults.length> 0){
     <div class="container">
-
-        @for (character of characters; track $index) {
-
-        <div class="card">
-            <div class="card__inner">
-                <div class="card__inner__front">        
-                    <img class="card__inner__img" src="{{character.image}}" alt="{{character.name}}">
-                    <div class="card__inner__front__title__container">
-                        <p class="card__inner__title ">{{character.name}}</p>                                            
-                    </div>
-                </div>
-                <div class="card__inner__back">             
-                    
-                    @if(character.gender != 'unknown'){
-                        <p><b> Gender:</b> {{character.gender}}</p>
-                    }                    
-
-                    @if(character.species != 'unknown'){
-                        <p><b>Species:</b> {{character.species}}</p>
-                    }  
-                    
-                    @if(character.type){
-                        <p><b>Type:</b> {{character.type}}</p>
-                    }                    
-
-                    @if(character.location.name != 'unknown'){
-                        <p><b>Location:</b> {{character.location.name}}</p>
-                    }  
-                </div>
-            </div>
-        </div>
-
-
+        @for (character of searchedResults; track $index) {
+        <app-card [character]="character"></app-card>
         }
-    </div>
+    </div>  
     }
     @else {
     <section>
