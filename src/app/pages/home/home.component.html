@@ -1,19 +1,34 @@
-<app-navbar (emitter)="getDataFromChild($event)"></app-navbar>
-<section class="background" infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="50"
+<app-navbar (emitter)="getDataToSearch($event)" (emitter2)="changeGender($event)"></app-navbar>
+<section class="background" infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="1"
     (scrolled)="onScroll()">
     <button id="button" (click)="goTop()">🔼</button>
 
     @if(searchedResults.length> 0){
     <div class="container">
         @for (character of searchedResults; track $index) {
+
+        @if ( genderToShow === character.gender ) {
         <app-card [character]="character"></app-card>
         }
-    </div>  
+
+        @if (genderToShow === 'all') {
+        <app-card [character]="character"></app-card>
+        }
+
+        }
+
+    </div>
     }
     @else {
-    <section>
-        <h1>La lista esta vacia</h1>
+
+    <section class="notfound__container">
+        <h1 class="notfound__container__text" data-aos="flip-down">
+            Nothing found...
+        </h1>
+        <img class="notfound__container__img" src="../../../assets/img/notfound.png" >
     </section>
+
+
     }
 
 

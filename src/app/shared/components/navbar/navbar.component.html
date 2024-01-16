@@ -2,7 +2,16 @@
     <div class="navbar">
 
         <div class="navbar__item">
-            
+            <div class="switch-container">
+                <input type="radio" id="hombre" name="gender" value="Male" [(ngModel)]="selectedGender" (change)="filter('Male')">
+                <label for="hombre">Male</label>
+              
+                <input type="radio" id="todos" name="gender" value="all" [(ngModel)]="selectedGender" (change)="filter('all')" checked>
+                <label for="todos">All</label>
+              
+                <input type="radio" id="mujer" name="gender" value="Female" [(ngModel)]="selectedGender" (change)="filter('Female')">
+                <label for="mujer">Female</label>
+            </div>
         </div>
 
         <div class="navbar__item">
@@ -11,9 +20,6 @@
 
         <div class="navbar__item">
             <div class="search__container">
-                <div>
-                    
-                </div>
                 <input type="text" [(ngModel)]="keyword" placeholder="Search..." (keyup)="sendData()" class="search__input">
              
                 <svg class="icon" viewBox="0 0 20 20">

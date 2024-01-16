@@ -19,7 +19,8 @@ export default class HomeComponent implements AfterViewInit {
   characters: Array<any> = []
   searchedResults: Array<any> = []
   nextUrl: string = '';
-  flag: boolean = true;
+  gatherData: boolean = true;
+  genderToShow: string = 'all';
   private characterService = inject(CharacterService)
 
   ngAfterViewInit() {
@@ -32,23 +33,26 @@ export default class HomeComponent implements AfterViewInit {
     })
   }
 
-
   goTop() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
-  getDataFromChild(keyword: string) {
+  getDataToSearch(keyword: string) {
     this.search(keyword);
   }
 
+  changeGender(gender: string = 'all') {
+    this.genderToShow = gender;
+  }
+
   search(keyword: string): void {
-    
+
     if (keyword.trim() === '') {
-      this.flag = true;
+      this.gatherData = true;
       this.searchedResults = [...this.characters];
 
     } else {
-      this.flag = false;
+      this.gatherData = false;
       this.searchedResults = this.characters.filter(character =>
         character.name.toLowerCase().includes(keyword.toLowerCase())
       );
@@ -58,7 +62,7 @@ export default class HomeComponent implements AfterViewInit {
 
 
   onScroll() {
-    if (this.flag) {
+    if (this.gatherData) {
       if (this.nextUrl) {
         this.characterService.getCharacters(this.nextUrl).subscribe({
           next: (response) => {
@@ -69,7 +73,7 @@ export default class HomeComponent implements AfterViewInit {
         });
       }
     }
-    
+
   }
 
 }

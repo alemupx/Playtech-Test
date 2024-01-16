@@ -6,6 +6,10 @@
 .navbar {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
+    gap: 1em;
+    padding-top: 1em;
+
+
 }
 
 .navbar__item {
@@ -15,7 +19,8 @@
 
 
 .navbar__logo {
-    width: 50%;
+    width: 45%;
+    padding: 1em;
 }
 
 /* Searchbar */
@@ -66,6 +71,32 @@
     stroke: #000000;
     stroke-width: 1;
 }
+
+
+/* Switch */
+
+.switch-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+  }
+  
+  .switch-container input[type="radio"] {
+    display: none;
+  }
+  
+  .switch-container label {
+    padding: 0.5em 1em;
+    border: 1px solid #999;
+    border-radius: 0.5em;
+    cursor: pointer;
+  }
+  
+  .switch-container input[type="radio"]:checked + label {
+    background-color: RGB(2, 177, 200);
+    color: white;
+  }
 
 /* Media Querys */
 

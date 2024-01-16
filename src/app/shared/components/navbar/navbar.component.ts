@@ -10,10 +10,16 @@ import { FormsModule } from '@angular/forms';
 })
 export class NavbarComponent {
   keyword: string = '';
+  selectedGender: string = 'all';
   @Output() emitter = new EventEmitter<string>();
-
+  @Output() emitter2 = new EventEmitter<string>();
 
   sendData() {    
     this.emitter.emit(this.keyword);        
+  }
+
+
+  filter(gender: string): void {    
+    this.emitter2.emit(gender);        
   }
 }
